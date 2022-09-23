@@ -18,21 +18,29 @@ def read_period_file(file):
             if line.strip().split("\t")[1] == "Period Starts":
                 period_cal.append([])
                 # add start of period
-                period_cal[-1].append(datetime.strptime(newline[0], "%d %b, %Y"))
+                # print(newline[0])
+                # print(newline[1])
+                period_cal[-1].append(datetime.strptime(newline[0], "%b %d, %Y"))
 
             elif line.strip().split("\t")[1] == "Period Ends":
                 # add end of period
-                period_cal[-1].append(datetime.strptime(newline[0], "%d %b, %Y"))
+                period_cal[-1].append(datetime.strptime(newline[0], "%b %d, %Y"))
+    print(period_cal[1:])
 
     # make list of cycle and menstruation times
     for period in period_cal[1:]:
-        num = period_cal.index(period)
+        num = period_cal[1:].index(period)
+        print(len(period_cal[1:]))
+        print(num)
         if num > 0:
             lengths = []
             # add first day
             lengths.append(period_cal[num][0])
+            print(lengths)
             # add length of cycle
             lengths.append((period_cal[num][0] - period_cal[num - 1][0]).days)
+            print(lengths)
+            print(period_cal[num][1] - period_cal[num][0])
             # add length of menstruation
             lengths.append((period_cal[num][1] - period_cal[num][0]).days + 1)
 

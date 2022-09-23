@@ -23,7 +23,7 @@ train_x = np.array(train_x.tolist() + train_x_.tolist()[-78:])
 train_y = np.array(train_y.tolist() + train_y_.tolist()[-78:])
 
 
-train = True
+train = False
 n_epochs = 4000
 
 if train:
@@ -67,8 +67,8 @@ accuracies = evaluate_predictions(test_y, predictions)
 
 print("Accuracy of menstrual cycle length prediction: ", round(accuracies[0], 4))
 print("Accuracy of menstruation length prediction: ", round(accuracies[1], 4))
-# print("Next periods: ")
-# next_periods = print_predictions(last_known_period, predictions)
+print("Next periods: ")
+next_periods = print_predictions(last_known_period, predictions)
 
 print(len(train_y))
 print(len(test_y))

@@ -6,6 +6,7 @@ from utils import *
 from random import choices, shuffle
 
 periods = read_period_file("calendar.txt")
+print(periods)
 train_x, train_y, test_x, test_y, last_known_period = make_train_test_sets(periods)
 
 men_days = [i[1] for i in periods]

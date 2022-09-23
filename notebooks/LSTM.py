@@ -11,7 +11,7 @@ from keras.models import load_model
 # Load datasets
 periods = read_period_file("calendar.txt")
 train_x, train_y, test_x, test_y, last_known_period = make_train_test_sets(periods)
-train = True
+train = False
 n_epochs = 4000
 
 if train:
@@ -55,8 +55,13 @@ accuracies = evaluate_predictions(test_y, predictions)
 
 print("Accuracy of menstrual cycle length prediction: ", round(accuracies[0], 4))
 print("Accuracy of menstruation length prediction: ", round(accuracies[1], 4))
-# print("Next periods: ")
-# next_periods = print_predictions(last_known_period, predictions)
+print("Last known periods: ")
+print(last_known_period)
+print("Test data:")
+print(test_x)
+print(type(test_x))
+print("Next periods: ")
+next_periods = print_predictions(last_known_period, predictions)
 
 print(len(train_y))
 print(len(test_y))
