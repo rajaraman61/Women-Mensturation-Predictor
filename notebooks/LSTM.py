@@ -34,7 +34,7 @@ if train:
     model.fit(train_x, train_y, 
               epochs=n_epochs, 
               verbose=2, 
-              #validation_data=(test_x, test_y)
+              validation_data=(test_x, test_y)
               )
     
     model.evaluate(test_x, test_y)

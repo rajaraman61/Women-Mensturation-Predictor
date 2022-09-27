@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 # APPS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -22,15 +22,26 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+]
+
+THIRD_PARTY_APPS = [
     # Third-party
     "allauth",
     "allauth.account",
     "crispy_forms",
     "debug_toolbar",
+]
+
+LOCAL_APPS = [
     # Local
     "accounts",
     "pages",
+    "mensturation"
 ]
+
+
+INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+
 
 # MIDDLEWARE
 # ------------------------------------------------------------------------------
@@ -169,6 +180,7 @@ LOGIN_REDIRECT_URL = "home"
 # https://django-allauth.readthedocs.io/en/latest/views.html#logout-account-logout
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 # https://django-allauth.readthedocs.io/en/latest/installation.html?highlight=backends
+AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",

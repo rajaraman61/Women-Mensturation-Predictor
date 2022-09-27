@@ -1,0 +1,58 @@
+{% extends '_base.html' %}
+
+{% block title %}Periods page{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 10px">
+    <h1>Your menstruation records</h1>
+    <br />
+    <table id="period" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>start date</th>
+                <th>end date</th>
+                <th>age</th>
+                <th>height</th>
+                <th>weight</th>
+                <th>duration</th>
+                <th>heart rate</th>
+                <th>ahrpd</th>
+                <th>abtpd</th>
+                <th>acbpd</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for period in periods %}
+                <tr>
+                    <td>{{period.id}}</td>
+
+                    <td>{{period.start_date}}</td>
+                    <td>{{period.end_date}}</td>
+                    <td>{{period.age}}</td>
+                    <td>{{period.height}}</td>
+                    <td>{{period.weight}}</td>
+                    <td>{{period.duration}}</td>
+                    <td>{{period.heart_rate}}</td>
+                    <td>{{period.average_heart_rate_per_day}}</td>
+                    <td>{{period.average_body_temp_per_day}}</td>
+                    <td>{{period.average_calories_burnt_per_day}}</td>
+                    <td><a href="{% url 'predict' period.id %}" class="btn btn-primary">Predict</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock content %}
